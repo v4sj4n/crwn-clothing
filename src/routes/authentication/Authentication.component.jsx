@@ -3,7 +3,7 @@ import { SignUpForm } from '../../components/sign-up-form/SignUpForm.component'
 
 import "./Authentication.styles.scss"
 
-export const Authentication = () => {
+const Authentication = () => {
   return (
     <div className="authentication-container">
       <SignInForm />
@@ -11,3 +11,5 @@ export const Authentication = () => {
     </div>
   )
 }
+
+export default Authentication

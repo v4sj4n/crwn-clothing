@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, } from 'react'
 
 import { FormInput } from '../form-input/FormInput.component'
 
@@ -11,7 +11,6 @@ import {
 import './SignInForm.styles.scss'
 import { Button } from '../button/Button.component'
 
-import { UserContext } from '../../contexts/User.context'
 
 const defaultFormFields = {
   email: '',
@@ -21,7 +20,6 @@ export const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { email, password } = formFields
 
-  const { setCurrentUser } = useContext(UserContext)
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields)
@@ -29,8 +27,7 @@ export const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup()
-    setCurrentUser(user)
-    await createUserDocumentFromAuth(user)
+
   }
 
   const handleSubmit = async (event) => {
@@ -39,7 +36,6 @@ export const SignInForm = () => {
     try {
       const { user } = await signInAuthUserWithEmailAndPassword(email, password)
 
-      setCurrentUser(user)
       resetFormFields()
     } catch (error) {
       switch (error.code) {
@@ -83,7 +79,7 @@ export const SignInForm = () => {
           value={password}
         />
         <div className="buttons-container">
-          <Button type="submit" onClick={handleSubmit}>
+          <Button type="submit">
             Sign In
           </Button>
           <Button buttonType={'google'} onClick={signInWithGoogle}>
