@@ -9,13 +9,13 @@ import {
 } from '../../utils/firebase/firebase.utils'
 
 import './SignInForm.styles.scss'
-import { Button } from '../button/Button.component'
+import  {Button, BUTTON_TYPE_CLASSES } from '../button/Button.component'
 
 
 const defaultFormFields = {
   email: '',
   password: '',
-}
+} 
 export const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { email, password } = formFields
@@ -82,7 +82,7 @@ export const SignInForm = () => {
           <Button type="submit">
             Sign In
           </Button>
-          <Button buttonType={'google'} onClick={signInWithGoogle}>
+          <Button buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>
             Google Sign In
           </Button>
         </div>
